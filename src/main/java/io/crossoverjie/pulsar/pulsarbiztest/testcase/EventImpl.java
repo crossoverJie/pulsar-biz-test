@@ -19,10 +19,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class EventImpl implements Event {
 
-    private WeComAlertService weComAlertService;
-
-    public EventImpl(WeComAlertService weComAlertService) {
-        this.weComAlertService = weComAlertService;
+    public EventImpl() {
     }
 
     private AtomicInteger pendingJobNumber = new AtomicInteger();
@@ -74,13 +71,8 @@ public class EventImpl implements Event {
         exceptionJob.forEach((k, v) -> {
             sb.append(StrUtil.format("> <font color=\"warning\">失败任务名称</font>:{}, {}\n", k, v));
         });
-        WeComAlertService.WeComAlertResponse response = weComAlertService.alert(WeComAlertService.WeComAlertRequest.builder()
-                .msgtype("markdown")
-                .markdown(WeComAlertService.WeComAlertRequest.Markdown.builder()
-                        .content(sb.toString())
-                        .build())
-                .build());
-        log.info("response={}", response.toString());
+
+        log.info(sb.toString());
 
     }
 }

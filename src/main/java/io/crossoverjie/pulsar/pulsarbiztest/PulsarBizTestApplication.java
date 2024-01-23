@@ -4,7 +4,6 @@ import cn.hutool.core.thread.NamedThreadFactory;
 import cn.hutool.core.util.StrUtil;
 import io.crossoverjie.pulsar.pulsarbiztest.testcase.Event;
 import io.crossoverjie.pulsar.pulsarbiztest.testcase.EventImpl;
-import io.crossoverjie.pulsar.pulsarbiztest.testcase.WeComAlertService;
 import io.crossoverjie.pulsar.pulsarbiztest.testcase.job.AbstractJobDefine;
 import io.crossoverjie.pulsar.pulsarbiztest.testcase.job.BatchReceiveTest;
 import io.crossoverjie.pulsar.pulsarbiztest.testcase.job.CustomPartitionProducerTest;
@@ -22,8 +21,8 @@ import org.apache.pulsar.common.policies.data.TenantInfo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -31,10 +30,8 @@ import java.util.concurrent.Executors;
 
 @SpringBootApplication
 @Slf4j
+@RestController
 public class PulsarBizTestApplication {
-
-    @Resource
-    private WeComAlertService weComAlertService;
 
     private Event currentEvent;
 
@@ -51,7 +48,7 @@ public class PulsarBizTestApplication {
 
         PulsarAdmin admin = getPulsarAdmin(serviceUrl, token);
 
-        Event event = new EventImpl(weComAlertService);
+        Event event = new EventImpl();
         currentEvent = event;
         CompletableFuture.runAsync(() -> {
             try {

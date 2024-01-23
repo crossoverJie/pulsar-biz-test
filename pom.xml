@@ -23,23 +23,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.squareup.okhttp3</groupId>
-			<artifactId>okhttp</artifactId>
-			<version>3.14.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.github.openfeign</groupId>
-			<artifactId>feign-core</artifactId>
-			<version>${feign.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>io.github.openfeign</groupId>
-			<artifactId>feign-okhttp</artifactId>
-			<version>${feign.version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -59,14 +42,7 @@
 
 		<dependency>
 			<groupId>org.apache.pulsar</groupId>
-			<artifactId>pulsar-client-admin-original</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.apache.pulsar</groupId>
-					<artifactId>pulsar-client-admin</artifactId>
-				</exclusion>
-			</exclusions>
-			<version>2.10.3</version>
+			<artifactId>pulsar-client-admin</artifactId>
 		</dependency>
 	</dependencies>
 
